@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <video controls hidden></video>
+    <button id="show">show</button>
+    <button id="reload">reload</button>
+
+    <script>
+        let vid = document.querySelector("video");
+        let btn1 = document.querySelector("#show");
+        let btn2 = document.querySelector("#reload");
+
+        let select = async () => {
+            try {
+                const mediaStream = await navigator.mediaDevices.getUserMedia({video:true, audio:true});
+                vid.srcObject = mediaStream;
+                vid.onloadedmetadata = () => {
+                    vid.play()
+                }
+            }
+            catch(err) {
+                console.log(err);
+            }
+        }
+
+        btn1.addEventListener('click', () => {
+            if (vid.onloadedmetadata) {
+                vid.requestPictureInPicture();
+            }
+        })
+
+        btn2.addEventListener('click', () => {
+            if (document.pictureInPictureElement) {
+                document.exitPictureInPicture();
+            }
+            select();
+        })
+
+        select();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#show {
+    padding: 2rem;
+    background-color: black;
+    color: skyblue;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 10px 0 0 10px;
+    border: 0 1px 0 0 solid white;
+}
+#reload {
+    padding: 2rem;
+    background-color: black;
+    color: skyblue;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 0 10px 10px 0;
+    border: 0 0 0 1px solid white;
+}
+button:active {
+    transform: scale(0.99);
+}
+button:focus {
+    outline: none;
+}
